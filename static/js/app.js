@@ -1,13 +1,13 @@
 function getPlot(id) {
-    d3.json("samples.json").then(importedData => {
+    d3.json("samples.json").then((importedData) => {
         console.log(importedData)
         var wfreq = importedData.metadata.map(d => d.wfreq)
         console.log(wfreq)
-        var ids = importedData.samples[0].otu_ids;
-        // console.log(ids)
+            // var ids = importedData.samples.filter($ => s.id.toString() === id)[0];
+            // console.log(ids)
         var values = importedData.samples[0].sample_values.slice(0, 10).reverse();
         // console.log(values)
-        var labels = importedData.samples[0].otu_labels.slice(0, 10);
+        // var labels = importedData.samples[0].otu_labels.slice(0, 10);
         // console.log(labels)
         //top ten otu ids
         var top_ten = (importedData.samples[0].otu_ids.slice(0, 10)).reverse();
