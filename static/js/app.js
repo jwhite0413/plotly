@@ -21,7 +21,7 @@ function getPlot(id) {
             y: OTU_id,
             type: 'bar',
             text: labels,
-            marker: { color: 'green' },
+            marker: { color: 'violet' },
             orientation: 'h',
         };
         var data = [trace];
@@ -35,7 +35,7 @@ function getPlot(id) {
                 l: 100,
                 r: 100,
                 t: 100,
-                b: 30
+                b: 100
             }
         };
         Plotly.newPlot("bar", data, layout);
@@ -55,7 +55,7 @@ function getPlot(id) {
         var layout_2 = {
             xaxis: { title: "OTU ID" },
             height: 600,
-            width: 1000
+            width: 800
         };
 
         var data1 = [trace1];
