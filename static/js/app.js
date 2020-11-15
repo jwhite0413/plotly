@@ -1,21 +1,25 @@
 function getPlot(id) {
     d3.json("samples.json").then((importedData) => {
-        console.log(importedData)
+        // console.log(importedData)
         var wfreq = importedData.metadata.map(d => d.wfreq)
-        console.log(wfreq)
-            // var ids = importedData.samples.filter($ => s.id.toString() === id)[0];
-            // console.log(ids)
-        var values = importedData.samples[0].sample_values.slice(0, 10).reverse();
+            // console.log(wfreq)
+        var samples = importedData.samples.filter(s => s.id.toString() === id)[0];
+        // console.log(ids)
+        var values = samples.sample_values.slice(0, 10).reverse();
         // console.log(values)
         // var labels = importedData.samples[0].otu_labels.slice(0, 10);
         // console.log(labels)
         //top ten otu ids
-        var top_ten = (importedData.samples[0].otu_ids.slice(0, 10)).reverse();
+        var top_ten = (samples.otu_ids.slice(0, 10)).reverse();
         // console.log(top_ten)
         var OTU_id = top_ten.map(d => "OTU" + d);
         // console.log(OTU_id)
-        var labels = importedData.samples[0].otu_labels.slice(0, 10);
+        var labels = samples.otu_labels.slice(0, 10);
         // console.log(labels)
+        // var ids = importedData.samples[0].otu_ids
+        // var sample = importedData.samples.s
+        // var bubblelabels = importedData.samples[0].otu_labels
+
         var trace = {
             x: values,
             y: OTU_id,
@@ -35,20 +39,20 @@ function getPlot(id) {
                 l: 100,
                 r: 100,
                 t: 100,
-                b: 100
+                b: 30
             }
         };
         Plotly.newPlot("bar", data, layout);
 
         var trace1 = {
-            x: importedData.samples.otu_ids,
-            y: importedData.samples.sample_values,
-            mode: "markers",
+            x: samples.otu_ids,
+            y: samples.sample_values,
+            mode: 'markers',
             marker: {
-                size: importedData.samples.sample_values,
-                color: importedData.samples.otu_ids
+                size: samples.sample_values,
+                color: samples.otu_ids
             },
-            text: importedData.samples.otu_labels
+            text: samples.otu_labels
         };
         var layout_2 = {
             xaxis: { title: "OTU ID" },
