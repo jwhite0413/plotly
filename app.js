@@ -55,7 +55,7 @@ function getPlot(id) {
         var layout_2 = {
             xaxis: { title: "OTU ID" },
             height: 600,
-            width: 800
+            width: 1000
         };
 
         var data1 = [trace1];
