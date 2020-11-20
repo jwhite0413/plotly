@@ -60,33 +60,62 @@ function getPlot(id) {
 
         var data1 = [trace1];
         Plotly.newPlot("bubble", data1, layout_2);
+
+        // bonus - create gauge chart
+
+        // var data_gauge = [{
+        //     domain: { x: [0, 1], y: [0, 1] },
+        //     value: parseFloat(wfreq),
+        //     title: { text: "Weekly Washing" },
+        //     type: "indicator",
+        //     mode: "gauge+number",
+        //     gauge: {
+        //         axis: { range: [null, 9] },
+        //         steps: [
+        //             { range: [0, 2], color: "yellow" },
+        //             { range: [2, 4], color: "cyan" },
+        //             { range: [4, 6], color: "teal" },
+        //             { range: [6, 8], color: "lime" },
+        //             { range: [8, 9], color: "green" },
+        //         ]
+        //     }
+        // }];
+        // var layout_gauge = {
+        //     width: 700,
+        //     height: 600,
+        //     margin: { t: 20, b: 40, l: 100, r: 100 }
+        // };
+        // Plotly.newPlot("gauge", data_gauge, layout_gauge);
+
     });
 }
 
-// function gauge(level) {
-//     d3.json("samples.json").then((importedData) => {
-//         // console.log(importedData)
-//         var wfreq = importedData.metadata.map(d => d.wfreq)
-//     });
-//     var degrees = 9 - level,
+//bonus gauge chart
+// function buildGauge(wfreq) {
+//     var fraction = wfreq / 9;
+
+//     var level = fraction * 180;
+//     var degrees = 180 - level,
 //         radius = .5;
-//     var radians = degrees * Math.PI / 9;
-//     var x = radius * Math.cos(radians);
+//     var radians = degrees * Math.PI / 180;
+//     var x = radius * Math.cos(Radians);
 //     var y = radius * Math.sin(radians);
+
 //     var mainPath = 'M -.0 -0.025 L .0 0.025 L',
 //         pathX = String(x),
 //         space = ' ',
 //         pathY = String(y),
-//         pathEnd = 'z';
+//         pathEnd = ' Z';
 //     var path = mainPath.concat(pathX, space, pathY, pathEnd);
-//     var data = [{
+
+//     var data_gauge = [{
 //             type: 'scatter',
 //             x: [0],
 //             y: [0],
-//             marker: { size: 28, color: '85000' },
+//             marker: { size: 28, color: '850000' },
 //             showlegend: false,
 //             name: 'wpw',
-//             text: level,
+//             text: wfreq,
 //             hoverinfo: 'text+name'
 //         },
 //         {
@@ -105,16 +134,17 @@ function getPlot(id) {
 //                     'rgba(255, 255, 255, 0)'
 //                 ]
 //             },
-//             // labels: ['8-9', '7-8', '6-7', '5-6', '4-5', '3-4', '2-3', '1-2', '0-1', ''],
-//             hoverinfo: 'text',
+//             labels: ['8-9', '7-8', '6-7', '5-6', '4-5', '3-4', '2-3', '1-2', '0-1', ''],
+//             hoverinfo: 'label',
 //             hole: .5,
 //             type: 'pie',
 //             showlegend: false
 
+
 //         }
 //     ];
 
-//     var layout = {
+//     var layout_gauge = {
 //         shapes: [{
 //             type: 'path',
 //             path: path,
@@ -123,23 +153,23 @@ function getPlot(id) {
 //                 color: '850000'
 //             }
 //         }],
-//         title: "Frequency",
-//         height: 500,
-//         width = 600,
-//         margin: {
-//             l: 25,
-//             r: 25,
-//             b: 25,
-//             t: 75
+//         title: "Belly Button Wash Frequency",
+//         xaxis: {
+//             zeroline: false,
+//             showticklabels: false,
+//             showgrid: false,
+//             range: [-1, 1]
 //         },
-//         xaxis: { zeroline: false, showticklabels: false, showgrid: false, range: [-1, 1] },
-//         yaxis: { zeroline: false, showticklabels: false, showgrid: false, range: [-1, 1] }
-
+//         yaxis: {
+//             zeroline: false,
+//             showticklabels: false,
+//             showgrid: false,
+//             range: [-1, 1]
+//         }
 //     };
-//     Plotly.newplot("gauge", data, layout);
-// };
-
-
+//     Plotly.newPlot("gauge", data_gauge, layout_gauge);
+// }
+//function for the information table
 function getInfo(id) {
     d3.json("samples.json").then((importedData) => {
         //variables 
