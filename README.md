@@ -7,7 +7,7 @@ The dataset reveals that a small handful of microbial species (also called opera
  
 Dataset was provided as a jsonfile and d3 was used make calls to the data. 
 
-Unfortunately was not able to get gauge chart to run
+Attempted the advanced challenge to run a gauge chart but was not able to get the chart to load on the page. 
  
  
  
