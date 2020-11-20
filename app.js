@@ -2,8 +2,8 @@
 function getPlot(id) {
     d3.json("samples.json").then((importedData) => {
         // console.log(importedData)
-        var wfreq = importedData.metadata.map(d => d.wfreq)
-            //filter data array to isolate samples
+        // var wfreq = importedData.metadata.map(d => d.wfreq)
+        //filter data array to isolate samples
         var samples = importedData.samples.filter(s => s.id.toString() === id)[0];
         // console.log(samples)
         var values = samples.sample_values.slice(0, 10).reverse();
